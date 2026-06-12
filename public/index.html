@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Piscina La Elisa · Boyeros</title>
-  <meta name="description" content="Piscina La Elisa en Boyeros. Hasta 15 personas. Música, dominó, nevera con hielo, horno con carbón, bebidas y comida. Abierto de 10:00 AM a 6:00 PM." />
+  <meta name="description" content="Piscina La Elisa en Boyeros. Desde 10 000 CUP hasta 15 personas. Incluye música y dominó. Servicios adicionales: horno, nevera con hielo y wifi. Abierto de 10:00 AM a 6:00 PM." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -51,47 +51,76 @@
     </div>
   </section>
 
-  <!-- ===== INFO ===== -->
+  <!-- ===== INFO / PRECIOS ===== -->
   <section id="info" class="section">
     <div class="section__head reveal">
-      <span class="eyebrow">Lo que incluye</span>
-      <h2 class="section__title">Todo listo para tu día perfecto</h2>
-      <p class="section__sub">Llega y disfruta: nosotros ponemos el resto.</p>
+      <span class="eyebrow">Detalles</span>
+      <h2 class="section__title">Precios y servicios</h2>
+      <p class="section__sub">Reserva el día completo. Los precios están en CUP.</p>
     </div>
 
-    <div class="features">
-      <article class="feature reveal">
-        <span class="feature__ico"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
-        <h3>Música</h3><p>Ambienta tu reunión con buen sonido.</p>
+    <!-- Precio principal -->
+    <div class="price reveal">
+      <div class="price__main">
+        <span class="price__label">Precio</span>
+        <span class="price__amount">10 000 <small>CUP</small></span>
+        <span class="price__cap">Hasta 15 personas</span>
+      </div>
+      <p class="price__extra">Se suma <strong>1 000</strong> por cada persona adicional, hasta 20 personas.</p>
+    </div>
+
+    <div class="plans">
+      <!-- Incluye -->
+      <article class="plan plan--include reveal">
+        <h3 class="plan__title">
+          <span class="plan__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Incluye
+        </h3>
+        <ul class="plan__list">
+          <li>
+            <span class="plan__ico"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+            Música
+          </li>
+          <li>
+            <span class="plan__ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="12" y1="4" x2="12" y2="20"/><circle cx="7.5" cy="9" r="1"/><circle cx="16.5" cy="15" r="1"/></svg></span>
+            Juego de dominó
+          </li>
+        </ul>
       </article>
-      <article class="feature reveal">
-        <span class="feature__ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="12" y1="4" x2="12" y2="20"/><circle cx="7.5" cy="9" r="1"/><circle cx="16.5" cy="15" r="1"/></svg></span>
-        <h3>Dominó</h3><p>Mesas listas para la partida.</p>
+
+      <!-- Servicios adicionales -->
+      <article class="plan plan--addons reveal">
+        <h3 class="plan__title">Servicios adicionales</h3>
+        <ul class="addons">
+          <li>
+            <span class="addon__name">
+              <span class="plan__ico"><svg viewBox="0 0 24 24"><path d="M12 3c1.5 2 1 4-1 5 2 1 3 3 2 5"/><path d="M5 13h14a7 7 0 0 1-14 0z"/><line x1="7" y1="20" x2="7" y2="21"/><line x1="17" y1="20" x2="17" y2="21"/></svg></span>
+              Horno
+            </span>
+            <span class="addon__price">1 000</span>
+          </li>
+          <li>
+            <span class="addon__name">
+              <span class="plan__ico"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="5" y1="10" x2="19" y2="10"/></svg></span>
+              Nevera con hielo
+            </span>
+            <span class="addon__price">500</span>
+          </li>
+          <li>
+            <span class="addon__name">
+              <span class="plan__ico"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M1.5 9a16 16 0 0 1 21 0"/><path d="M8.5 16.1a6 6 0 0 1 7 0"/><line x1="12" y1="20" x2="12" y2="20"/></svg></span>
+              Wifi
+            </span>
+            <span class="addon__price">500</span>
+          </li>
+        </ul>
       </article>
-      <article class="feature reveal">
-        <span class="feature__ico"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="5" y1="10" x2="19" y2="10"/></svg></span>
-        <h3>Nevera con hielo</h3><p>Tus bebidas siempre frías.</p>
-      </article>
-      <article class="feature reveal">
-        <span class="feature__ico"><svg viewBox="0 0 24 24"><path d="M12 3c1.5 2 1 4-1 5 2 1 3 3 2 5"/><path d="M5 13h14a7 7 0 0 1-14 0z"/><line x1="7" y1="20" x2="7" y2="21"/><line x1="17" y1="20" x2="17" y2="21"/></svg></span>
-        <h3>Horno con carbón</h3><p>Perfecto para asar a la parrilla.</p>
-      </article>
-      <article class="feature reveal">
-        <span class="feature__ico"><svg viewBox="0 0 24 24"><path d="M6 8h12l-1 12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8z"/><path d="M9 8V5a3 3 0 0 1 6 0v3"/></svg></span>
-        <h3>Bebidas</h3><p>Variedad para refrescarte.</p>
-      </article>
-      <article class="feature reveal">
-        <span class="feature__ico"><svg viewBox="0 0 24 24"><path d="M4 3v7a3 3 0 0 0 6 0V3"/><line x1="7" y1="10" x2="7" y2="21"/><path d="M17 3c-1.5 0-2.5 2-2.5 5s1 4 2.5 4v9"/></svg></span>
-        <h3>Comida</h3><p>Disfruta sin preocuparte por nada.</p>
-      </article>
-      <article class="feature reveal">
-        <span class="feature__ico"><svg viewBox="0 0 24 24"><path d="M2 16c2 0 2-1.5 4-1.5S8 16 10 16s2-1.5 4-1.5S16 16 18 16s2-1.5 4-1.5"/><path d="M2 20c2 0 2-1.5 4-1.5S8 20 10 20s2-1.5 4-1.5S16 20 18 20s2-1.5 4-1.5"/><circle cx="12" cy="6" r="2"/></svg></span>
-        <h3>Piscina</h3><p>Agua limpia y zona de descanso.</p>
-      </article>
-      <article class="feature reveal">
-        <span class="feature__ico"><svg viewBox="0 0 24 24"><path d="M12 3l2.2 5.6L20 9.2l-4.5 3.6L17 19l-5-3.2L7 19l1.5-6.2L4 9.2l5.8-.6z"/></svg></span>
-        <h3>Y mucho más</h3><p>Detalles pensados para tu comodidad.</p>
-      </article>
+    </div>
+
+    <!-- Aviso de anticipo -->
+    <div class="notice reveal">
+      <span class="notice__star"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 6.5L21 10l-5 4.2L17.5 21 12 17.3 6.5 21 8 14.2 3 10l6.5-.5z"/></svg></span>
+      <p>Para reservar se debe pagar un <strong>anticipo de 2 000</strong>.</p>
     </div>
   </section>
 
