@@ -316,7 +316,7 @@ a { color: inherit; }
   font-size: 1.2rem;
   color: var(--blue-deep);
 }
-.addon__price::before { content: "+ "; color: var(--muted); font-weight: 600; }
+.addon__price::before { display: none; }
 
 /* ===== AVISO ANTICIPO ===== */
 .notice {
