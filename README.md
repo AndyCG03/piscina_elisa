@@ -69,19 +69,35 @@ piscina-la-elisa/
 ├── styles.css                 # Todos los estilos (CSS puro)
 ├── app.js                     # Lógica JavaScript (animaciones, galería, lightbox)
 ├── public/
+│   ├── admin.html             # Panel de administración (/admin)
+│   ├── css/
+│   │   ├── styles.css
+│   │   └── admin.css
+│   ├── js/
+│   │   ├── app.js
+│   │   ├── admin.js
+│   │   └── calendar.js        # Calendario de disponibilidad (público y admin)
 │   ├── images/
 │   │   ├── logo.webp          # Logo circular de la marca
 │   │   └── gallery/           # Carpeta para fotos de la piscina
-│   │       ├── foto1.webp
-│   │       ├── foto2.webp
-│   │       └── ... (todas las imágenes se cargan automáticamente)
 │   ├── favicon.ico
 │   ├── favicon-32x32.png
 │   ├── favicon-16x16.png
 │   ├── apple-touch-icon.png
 │   └── site.webmanifest
-├── server.js                  # Servidor Express (si usas backend)
+├── data/                      # Persistencia en archivos JSON
+│   ├── prices.json            # Precios y servicios
+│   ├── reservations.json      # Reservas y bloqueos
+│   └── gallery.json           # Metadata de la galería (orden, portada)
+├── lib/
+│   ├── store.js               # Lectura/escritura de los JSON
+│   ├── auth.js                # Sesión JWT del admin
+│   └── images.js              # Subida y optimización (multer + sharp)
+├── server.js                  # Servidor Express (API + estáticos)
+├── config.js                  # Configuración (puerto, credenciales, secreto)
 ├── package.json               # Dependencias y scripts
+├── .env.example               # Plantilla de credenciales del admin
+├── BACKOFFICE.md              # Guía del panel de administración
 └── README.md                  # Este archivo
 ```
 
@@ -137,8 +153,6 @@ PORT=3000
 ---
 
 ## Desarrollo Local
-
-### Opción 1: Servidor Node.js (Recomendado)
 
 1. Inicia el servidor:
 ```bash

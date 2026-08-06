@@ -1,0 +1,25 @@
+# Dependencias
+node_modules/
+
+# Datos creados por el backoffice (precios, reservas, galería).
+# NO versiones esta carpeta: Git la pisaría al actualizar.
+data/
+
+# Credenciales y secretos del admin (NO subir nunca)
+.env
+.env.local
+
+# Logs
+npm-debug.log*
+*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Archivos temporales de escritura atómica del store
+*.tmp

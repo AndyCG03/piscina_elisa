@@ -85,3 +85,84 @@ document.addEventListener("keydown", (e) => {
 });
 
 loadGallery();
+
+// ===== Precios dinámicos (desde /api/prices) =====
+function fmt(n) {
+  return Math.round(n).toLocaleString("en-US").replace(/,/g, " ");
+}
+
+async function loadPrices() {
+  let prices = null;
+  try {
+    const res = await fetch("/api/prices");
+    prices = await res.json();
+  } catch {
+    // Si la API falla se mantienen los valores por defecto del HTML.
+  }
+  if (!prices) return;
+
+  const amount = document.getElementById("priceAmount");
+  if (amount) amount.innerHTML = `${fmt(prices.basePrice)} <small>${prices.currency}</small>`;
+
+  const cap = document.getElementById("priceCap");
+  if (cap) cap.textContent = `Hasta ${prices.includedPeople} personas`;
+
+  const extra = document.getElementById("priceExtra");
+  if (extra) {
+    extra.innerHTML = `Se suma <strong>${fmt(prices.extraPerPerson)}</strong> por cada persona adicional, hasta ${prices.maxPeople} personas.`;
+  }
+
+  const deposit = document.getElementById("depositVal");
+  if (deposit) deposit.textContent = `anticipo de ${fmt(prices.deposit)}`;
+
+  document.querySelectorAll("[data-addon]").forEach((node) => {
+    const a = prices.addons && prices.addons[node.dataset.addon];
+    if (a) node.textContent = fmt(a.price);
+  });
+}
+
+// ===== Calendario público de disponibilidad =====
+const WA_NUMBER = "5353603933"; // número principal de WhatsApp de la web
+const reserveSheet = document.getElementById("reserveSheet");
+
+function openSheet() { reserveSheet.hidden = false; }
+function closeSheet() { reserveSheet.hidden = true; }
+document.addEventListener("click", (e) => {
+  if (e.target === reserveSheet) closeSheet();
+});
+
+function initPublicCalendar() {
+  const container = document.getElementById("publicCalendar");
+  if (!container) return;
+
+  const cal = window.PoolCalendar.create(container, {
+    defaultMonth: window.PoolCalendar.todayKey(),
+    minMonth: window.PoolCalendar.todayKey(),
+    async onMonth(month) {
+      try {
+        const res = await fetch(`/api/availability?month=${month}`);
+        return await res.json();
+      } catch {
+        return { statuses: {} };
+      }
+    },
+    onDayClick(date, status) {
+      if (status !== "available") return; // solo se reservan días disponibles
+      const label = window.PoolCalendar.formatLabel(date);
+      document.getElementById("rsTitle").textContent =
+        label.charAt(0).toUpperCase() + label.slice(1);
+      document.getElementById("rsSubtitle").textContent = "El día está disponible. Confirma y reserva.";
+      const msg =
+        `Hola! Quiero reservar la Piscina La Elisa 🏊 para el día ${label}. ¿Está disponible?`;
+      document.getElementById("rsReserve").href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+      reserveSheet.hidden = false;
+    },
+  });
+
+  cal.init();
+}
+
+document.getElementById("rsClose").addEventListener("click", closeSheet);
+
+loadPrices();
+initPublicCalendar();

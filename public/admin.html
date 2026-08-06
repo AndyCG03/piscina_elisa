@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Elisa · Administración</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css?v=6" />
+  <link rel="stylesheet" href="/css/admin.css?v=3" />
+</head>
+<body>
+
+  <!-- ===== LOGIN ===== -->
+  <div id="loginView" class="login">
+    <div class="login__card">
+      <img src="/images/logo.webp" alt="Logo La Elisa" class="login__logo" />
+      <h1 class="login__title">Administración</h1>
+      <p class="login__sub">Piscina La Elisa · Boyeros</p>
+      <form id="loginForm" class="form">
+        <label class="field">
+          <span class="field__label">Usuario</span>
+          <input name="user" class="field__input" autocomplete="username" required />
+        </label>
+        <label class="field">
+          <span class="field__label">Contraseña</span>
+          <input name="pass" type="password" class="field__input" autocomplete="current-password" required />
+        </label>
+        <p class="form__error" id="loginError" hidden></p>
+        <button type="submit" class="btn btn--yellow btn--full">Entrar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== PANEL ===== -->
+  <div id="appView" class="admin" hidden>
+    <header class="admin__top">
+      <div class="admin__brand">
+        <img src="/images/logo.webp" alt="Logo" class="admin__logo" />
+        <span>La Elisa · Panel</span>
+      </div>
+      <div class="admin__actions">
+        <a href="/" class="admin__link">Ver sitio</a>
+        <button id="logoutBtn" type="button" class="btn btn--soft">Salir</button>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button type="button" data-tab="prices" class="tab is-active">Precios</button>
+      <button type="button" data-tab="calendar" class="tab">Calendario</button>
+      <button type="button" data-tab="gallery" class="tab">Galería</button>
+    </nav>
+
+    <main class="admin__main">
+
+      <!-- Precios -->
+      <section id="tab-prices" class="tab-pane is-active">
+        <h2 class="admin__title">Precios y servicios</h2>
+        <p class="admin__sub">Estos valores se reflejan al instante en la sección pública de precios.</p>
+        <form id="pricesForm" class="card form">
+          <div class="form__grid">
+            <label class="field">
+              <span class="field__label">Precio base (CUP)</span>
+              <input name="basePrice" type="number" min="0" step="100" class="field__input" required />
+            </label>
+            <label class="field">
+              <span class="field__label">Personas incluidas</span>
+              <input name="includedPeople" type="number" min="1" class="field__input" required />
+            </label>
+            <label class="field">
+              <span class="field__label">Precio por persona extra (CUP)</span>
+              <input name="extraPerPerson" type="number" min="0" step="100" class="field__input" required />
+            </label>
+            <label class="field">
+              <span class="field__label">Tope de personas</span>
+              <input name="maxPeople" type="number" min="1" class="field__input" required />
+            </label>
+            <label class="field">
+              <span class="field__label">Anticipo (CUP)</span>
+              <input name="deposit" type="number" min="0" step="100" class="field__input" required />
+            </label>
+            <div class="field field--addons">
+              <span class="field__label">Servicios adicionales (CUP)</span>
+              <div class="field__row">
+                <label class="field__mini"><span>Horno</span>
+                  <input name="horno" type="number" min="0" step="100" class="field__input" required />
+                </label>
+                <label class="field__mini"><span>Nevera</span>
+                  <input name="nevera" type="number" min="0" step="100" class="field__input" required />
+                </label>
+                <label class="field__mini"><span>Wifi</span>
+                  <input name="wifi" type="number" min="0" step="100" class="field__input" required />
+                </label>
+              </div>
+            </div>
+          </div>
+          <p class="form__msg" id="pricesMsg" hidden></p>
+          <button type="submit" class="btn btn--yellow btn--full">Guardar cambios</button>
+        </form>
+      </section>
+
+      <!-- Calendario -->
+      <section id="tab-calendar" class="tab-pane">
+        <h2 class="admin__title">Calendario de reservas</h2>
+        <p class="admin__sub">Toca un día disponible para crear una reserva o bloquearlo por mantenimiento.</p>
+        <div class="cal__legend">
+          <span><i class="cal__dot cal__dot--avail"></i> Disponible</span>
+          <span><i class="cal__dot cal__dot--reserved"></i> Reservado</span>
+          <span><i class="cal__dot cal__dot--blocked"></i> Bloqueado</span>
+          <span><i class="cal__dot cal__dot--past"></i> Día pasado</span>
+        </div>
+        <div id="adminCalendar" class="cal"></div>
+      </section>
+
+      <!-- Galería -->
+      <section id="tab-gallery" class="tab-pane">
+        <h2 class="admin__title">Galería de fotos</h2>
+        <p class="admin__sub">Sube, reordena, marca portada o elimina las fotos de la web.</p>
+        <label class="btn btn--yellow btn--full" for="photoInput">Subir fotos</label>
+        <input type="file" id="photoInput" accept="image/jpeg,image/png,image/webp" multiple hidden />
+        <p class="admin__hint">jpg, png o webp · hasta 5 MB cada foto · se optimizan automáticamente a webp</p>
+        <p class="form__msg" id="galleryMsg" hidden></p>
+        <div id="galleryAdmin" class="admgrid"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== BOTTOM SHEET DEL ADMIN ===== -->
+  <div id="adminSheet" class="sheet" hidden>
+    <div class="sheet__panel" id="adminSheetPanel"></div>
+  </div>
+
+  <script src="/js/calendar.js?v=3"></script>
+  <script src="/js/admin.js?v=2"></script>
+</body>
+</html>
