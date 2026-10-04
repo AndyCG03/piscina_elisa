@@ -468,7 +468,7 @@ a { color: inherit; }
 .contact__item--wa .contact__ico { background: #e7fff0; }
 .contact__item--wa .contact__ico svg { fill: #25d366; stroke: none; }
 .contact__text { display: flex; flex-direction: column; }
-.contact__label { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.contact__label { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
 .contact__value { font-size: 1.4rem; font-weight: 700; font-family: "Baloo 2", sans-serif; color: var(--blue-deep); line-height: 1.1; }
 .contact__value--sm { font-size: 1.15rem; }
 
@@ -737,7 +737,7 @@ a { color: inherit; }
 }
 .wa-option__ico svg { width: 24px; height: 24px; fill: #25d366; }
 .wa-option__text { display: flex; flex-direction: column; flex: 1; }
-.wa-option__label { font-size: .82rem; color: var(--muted); }
+.wa-option__label { font-size: .82rem; font-weight: 700; color: var(--ink); }
 .wa-option__value { font-size: 1.2rem; font-weight: 700; color: var(--blue-deep); }
 .wa-option__arrow { font-size: 1.8rem; line-height: 1; color: #25d366; }
 .wa-option--call:hover { border-color: var(--blue); background: var(--bg-alt); }
