@@ -136,7 +136,7 @@ function openWaSheet(msg, subtitle) {
     a.href = `https://wa.me/${a.dataset.wa}?text=${encodeURIComponent(msg)}`;
   });
   document.getElementById("waSubtitle").textContent =
-    subtitle || "Elige un número de WhatsApp para contactarnos.";
+    subtitle || "Escríbenos por WhatsApp o llámanos al fijo.";
   waSheet.hidden = false;
 }
 
@@ -154,12 +154,12 @@ document.addEventListener("keydown", (e) => {
 document.querySelectorAll("[data-wa-open]").forEach((btn) =>
   btn.addEventListener("click", (e) => {
     e.preventDefault();
-    openWaSheet(WA_DEFAULT_MSG, "Elige a qué número de WhatsApp escribir para reservar.");
+    openWaSheet(WA_DEFAULT_MSG, "Escríbenos por WhatsApp o llámanos al fijo para reservar.");
   })
 );
 document.getElementById("waClose").addEventListener("click", closeWaSheet);
 // al elegir un número se abre WhatsApp y se cierra el modal
-waSheet.querySelectorAll("[data-wa]").forEach((a) => a.addEventListener("click", closeWaSheet));
+waSheet.querySelectorAll("[data-wa], [data-call]").forEach((a) => a.addEventListener("click", closeWaSheet));
 
 document.getElementById("rsReserve").addEventListener("click", () => {
   closeSheet();

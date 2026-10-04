@@ -740,6 +740,10 @@ a { color: inherit; }
 .wa-option__label { font-size: .82rem; color: var(--muted); }
 .wa-option__value { font-size: 1.2rem; font-weight: 700; color: var(--blue-deep); }
 .wa-option__arrow { font-size: 1.8rem; line-height: 1; color: #25d366; }
+.wa-option--call:hover { border-color: var(--blue); background: var(--bg-alt); }
+.wa-option--call .wa-option__ico { background: var(--bg-alt); color: var(--blue); }
+.wa-option--call .wa-option__ico svg { fill: none; }
+.wa-option--call .wa-option__arrow { color: var(--blue); }
 .btn--green { background: #25d366; color: #fff; }
 .btn--green:hover { background: #1fba5b; }
 .btn--blue { background: var(--blue-mid); color: #fff; }
