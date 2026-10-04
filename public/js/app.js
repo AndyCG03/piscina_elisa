@@ -150,10 +150,13 @@ document.addEventListener("keydown", (e) => {
   closeSheet();
 });
 
-document.getElementById("waFloat").addEventListener("click", (e) => {
-  e.preventDefault();
-  openWaSheet(WA_DEFAULT_MSG);
-});
+// Botones "Reservar" y botón flotante: abren el selector de número
+document.querySelectorAll("[data-wa-open]").forEach((btn) =>
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    openWaSheet(WA_DEFAULT_MSG, "Elige a qué número de WhatsApp escribir para reservar.");
+  })
+);
 document.getElementById("waClose").addEventListener("click", closeWaSheet);
 // al elegir un número se abre WhatsApp y se cierra el modal
 waSheet.querySelectorAll("[data-wa]").forEach((a) => a.addEventListener("click", closeWaSheet));
@@ -166,7 +169,7 @@ document.getElementById("rsReserve").addEventListener("click", () => {
 // ===== Calendario público de disponibilidad =====
 function initPublicCalendar() {
   const container = document.getElementById("publicCalendar");
-  if (!container) return;
+  if (!container || container.closest("[hidden]")) return; // calendario oculto
 
   const cal = window.PoolCalendar.create(container, {
     defaultMonth: window.PoolCalendar.todayKey(),
