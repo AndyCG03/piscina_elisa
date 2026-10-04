@@ -542,23 +542,6 @@ a { color: inherit; }
   aspect-ratio: 9 / 16;
 }
 .reel__video { display: block; width: 100%; height: 100%; object-fit: cover; }
-.reel__play {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 86px; height: 86px;
-  border: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .92);
-  color: var(--blue-deep);
-  display: flex; align-items: center; justify-content: center;
-  padding-left: 6px;
-  cursor: pointer;
-  box-shadow: 0 12px 30px rgba(10, 56, 73, .35);
-  transition: transform .15s;
-}
-.reel__play:hover { transform: translate(-50%, -50%) scale(1.08); }
-.reel.is-playing .reel__play { display: none; }
 
 /* ===== WHATSAPP FLOAT ===== */
 .wa-float {
