@@ -200,5 +200,14 @@ function initPublicCalendar() {
 
 document.getElementById("rsClose").addEventListener("click", closeSheet);
 
+// ===== Video: solo se reproduce al dar play =====
+const reelVideo = document.getElementById("reelVideo");
+const reelBox = reelVideo && reelVideo.closest(".reel");
+if (reelVideo) {
+  document.getElementById("reelPlay").addEventListener("click", () => reelVideo.play());
+  reelVideo.addEventListener("play", () => reelBox.classList.add("is-playing"));
+  reelVideo.addEventListener("ended", () => reelBox.classList.remove("is-playing"));
+}
+
 loadPrices();
 initPublicCalendar();
