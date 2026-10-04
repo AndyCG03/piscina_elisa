@@ -121,16 +121,49 @@ async function loadPrices() {
   });
 }
 
-// ===== Calendario público de disponibilidad =====
-const WA_NUMBER = "5353603933"; // número principal de WhatsApp de la web
+// ===== Selector de número de WhatsApp =====
+const WA_DEFAULT_MSG = "Hola, estoy interesado en alquilar la Piscina La Elisa 🏊";
 const reserveSheet = document.getElementById("reserveSheet");
+const waSheet = document.getElementById("waSheet");
+let reserveMsg = WA_DEFAULT_MSG;
 
-function openSheet() { reserveSheet.hidden = false; }
 function closeSheet() { reserveSheet.hidden = true; }
+function closeWaSheet() { waSheet.hidden = true; }
+
+// Abre el modal con ambos números; cada opción lleva el mensaje indicado
+function openWaSheet(msg, subtitle) {
+  waSheet.querySelectorAll("[data-wa]").forEach((a) => {
+    a.href = `https://wa.me/${a.dataset.wa}?text=${encodeURIComponent(msg)}`;
+  });
+  document.getElementById("waSubtitle").textContent =
+    subtitle || "Elige un número de WhatsApp para contactarnos.";
+  waSheet.hidden = false;
+}
+
 document.addEventListener("click", (e) => {
   if (e.target === reserveSheet) closeSheet();
+  if (e.target === waSheet) closeWaSheet();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+  closeWaSheet();
+  closeSheet();
 });
 
+document.getElementById("waFloat").addEventListener("click", (e) => {
+  e.preventDefault();
+  openWaSheet(WA_DEFAULT_MSG);
+});
+document.getElementById("waClose").addEventListener("click", closeWaSheet);
+// al elegir un número se abre WhatsApp y se cierra el modal
+waSheet.querySelectorAll("[data-wa]").forEach((a) => a.addEventListener("click", closeWaSheet));
+
+document.getElementById("rsReserve").addEventListener("click", () => {
+  closeSheet();
+  openWaSheet(reserveMsg, "Elige a qué número de WhatsApp enviar tu reserva.");
+});
+
+// ===== Calendario público de disponibilidad =====
 function initPublicCalendar() {
   const container = document.getElementById("publicCalendar");
   if (!container) return;
@@ -154,7 +187,7 @@ function initPublicCalendar() {
       document.getElementById("rsSubtitle").textContent = "El día está disponible. Confirma y reserva.";
       const msg =
         `Hola! Quiero reservar la Piscina La Elisa 🏊 para el día ${label}. ¿Está disponible?`;
-      document.getElementById("rsReserve").href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+      reserveMsg = msg;
       reserveSheet.hidden = false;
     },
   });

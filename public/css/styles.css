@@ -713,6 +713,33 @@ a { color: inherit; }
 .sheet__subtitle { color: var(--muted); font-size: .98rem; margin-top: 4px; }
 .sheet__actions { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
 .sheet__actions .btn { width: 100%; text-align: center; }
+/* opciones del selector de WhatsApp */
+.wa-options { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+.wa-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: #fff;
+  text-decoration: none;
+  transition: transform .15s, border-color .2s, background .2s;
+}
+.wa-option:hover { transform: translateX(4px); border-color: #25d366; background: #f3fff8; }
+.wa-option__ico {
+  flex: none;
+  display: inline-flex;
+  width: 46px; height: 46px;
+  align-items: center; justify-content: center;
+  border-radius: 13px;
+  background: #e7fff0;
+}
+.wa-option__ico svg { width: 24px; height: 24px; fill: #25d366; }
+.wa-option__text { display: flex; flex-direction: column; flex: 1; }
+.wa-option__label { font-size: .82rem; color: var(--muted); }
+.wa-option__value { font-size: 1.2rem; font-weight: 700; color: var(--blue-deep); }
+.wa-option__arrow { font-size: 1.8rem; line-height: 1; color: #25d366; }
 .btn--green { background: #25d366; color: #fff; }
 .btn--green:hover { background: #1fba5b; }
 .btn--blue { background: var(--blue-mid); color: #fff; }
